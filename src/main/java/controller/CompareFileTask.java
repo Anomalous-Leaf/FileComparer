@@ -12,6 +12,12 @@ public class CompareFileTask implements Runnable
         pair = inPair;
         table = inTable;
     }
+
+    @Override
+    public void run()
+    {
+        //Compare file contents of the 2 files
+    }
     
     
 }

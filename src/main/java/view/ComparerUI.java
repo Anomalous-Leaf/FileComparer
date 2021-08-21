@@ -21,6 +21,8 @@ public class ComparerUI extends Application
     
     private TableView<ComparisonResult> resultTable = new TableView<>();  
     private ProgressBar progressBar = new ProgressBar();
+    List<ComparisonResult> newResults;
+
     
     @Override
     public void start(Stage stage)
@@ -96,7 +98,7 @@ public class ComparerUI extends Application
 
         // Extremely fake way of demonstrating how to update the table (noting that this shouldn't
         // just happen once at the end, but progressively as each result is obtained.)
-        List<ComparisonResult> newResults = new ArrayList<>();
+        newResults = new ArrayList<>();
         newResults.add(new ComparisonResult("Example File 1", "Example File 2", 0.75));
         newResults.add(new ComparisonResult("Example File 1", "Example File 3", 0.31));
         newResults.add(new ComparisonResult("Example File 2", "Example File 3", 0.45));
@@ -109,5 +111,16 @@ public class ComparerUI extends Application
     private void stopComparison()
     {
         System.out.println("Stopping comparison...");
+    }
+
+    public void setResults(List<ComparisonResult> inNewResults)
+    {
+        newResults = inNewResults;
+        resultTable.getItems().setAll(newResults);
+    }
+
+    public void setProgress(double progress)
+    {
+        progressBar.setProgress(progress);
     }
 }

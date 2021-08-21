@@ -1,0 +1,13 @@
+model/FileIO.java
+ model.FileIO
+controller/CompareFileTask.java
+ controller.CompareFileTask
+model/ComparisonTable.java
+ model.ComparisonTable
+ model.ComparisonTable$1
+model/ComparisonResult.java
+ model.ComparisonResult
+view/ComparerUI.java
+ view.ComparerUI
+model/ComparisonPair.java
+ model.ComparisonPair

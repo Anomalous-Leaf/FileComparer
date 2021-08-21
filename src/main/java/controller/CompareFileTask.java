@@ -3,6 +3,8 @@ package controller;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
+import java.util.Arrays;
+
 import model.*;
 
 public class CompareFileTask implements Runnable
@@ -32,7 +34,12 @@ public class CompareFileTask implements Runnable
             int rowNumber;
             double similarity;
 
-            System.out.println(file1Contents.length());
+                
+            Arrays.fill(subsolutions[0], 0);
+            for (int ii = 0; ii < subsolutions.length; ii++)
+            {
+                subsolutions[ii][0] = 0;
+            }
 
             //LCS Algorithm from assignment specification, with slight modifications
             for(int ii = 1; ii < file1Contents.length(); ii++)
@@ -60,8 +67,6 @@ public class CompareFileTask implements Runnable
 
                 }
             }
-            System.out.println("pass loop");
-
 
             columnNumber = file1Contents.length() - 1;
             rowNumber = file2Contents.length() - 1;
@@ -76,19 +81,19 @@ public class CompareFileTask implements Runnable
                 }
                 else if (directionLeft[rowNumber][columnNumber])
                 {
-                    columnNumber -= 1;
+                    rowNumber -= 1;
                 }
                 else
                 {
-                    rowNumber -= 1;
-                }
+                    columnNumber -= 1;
 
-                System.out.println("iteration");
+                }
 
             }
 
+            System.out.println("matches: " + matches);
 
-            similarity = (matches * 2) / (file1Contents.length());
+            similarity = (double)(((double)(matches * 2)) / ((double)(file1Contents.length() + file2Contents.length() - 2)));
 
 
             //Construct new ComparisonResult object with file names and the calculated similarity and add to table

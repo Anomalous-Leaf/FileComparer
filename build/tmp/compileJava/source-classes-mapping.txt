@@ -4,12 +4,12 @@ model/ComparisonPair.java
  model.ComparisonPair
 model/ComparisonResult.java
  model.ComparisonResult
+view/ComparerUI.java
+ view.ComparerUI
+ view.ComparerUI$1
 controller/CompareFileTask.java
  controller.CompareFileTask
 model/ComparisonTable.java
  model.ComparisonTable
  model.ComparisonTable$1
  model.ComparisonTable$2
-view/ComparerUI.java
- view.ComparerUI
- view.ComparerUI$1

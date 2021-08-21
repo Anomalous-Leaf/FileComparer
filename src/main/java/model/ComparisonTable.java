@@ -89,15 +89,11 @@ public class ComparisonTable
             //Loop until all tasks are complete (interrupted exception thrown)
             while (true)
             {
-                System.out.println("enter loop");
-
                 //Take new result (Can throw interrupted exception)
                 newResult = resultQueue.take();
 
-                System.out.println("pass blocking");
 
-
-                System.out.println(newResult.getFile1() + "->" + newResult.getFile2());
+                System.out.println(newResult.getFile1() + "->" + newResult.getFile2() + "similarity: " + newResult.getSimilarity());
 
                 
                 //Add to results.csv
@@ -134,6 +130,9 @@ public class ComparisonTable
         {
             //Exit loop. All files finished comparing
         }
+
+        System.out.println("Comparisons: " + compareTasks.size());
+
 
         
     }

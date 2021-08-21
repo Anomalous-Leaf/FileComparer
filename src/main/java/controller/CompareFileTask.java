@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import model.*;
 
@@ -21,9 +22,9 @@ public class CompareFileTask implements Runnable
         //Compare file contents of the 2 files
         try {
             Path file1 = pair.getFirstPath();
-            String file1Contents = new String(Files.readAllBytes(file1));
+            String file1Contents = new String(Files.readAllBytes(file1), StandardCharsets.UTF_8);
             Path file2 = pair.getSecondPath();
-            String file2Contents = new String(Files.readAllBytes(file2));
+            String file2Contents = new String(Files.readAllBytes(file2), StandardCharsets.UTF_8);
             int[][] subsolutions = new int[file1Contents.length()][file1Contents.length()];
             boolean[][] directionLeft = new boolean[file1Contents.length()][file1Contents.length()];    
             int matches = 0;
@@ -31,11 +32,15 @@ public class CompareFileTask implements Runnable
             int rowNumber;
             double similarity;
 
+            System.out.println(file1Contents.length());
+
             //LCS Algorithm from assignment specification, with slight modifications
-            for(int ii = 1; ii <= file1Contents.length(); ii++)
+            for(int ii = 1; ii < file1Contents.length(); ii++)
             {
-                for (int jj = 1; jj <= file2Contents.length(); jj++)
+                for (int jj = 1; jj < file2Contents.length(); jj++)
                 {
+
+
                     if (file1Contents.charAt(ii - 1) == file2Contents.charAt(jj - 1))
                     {
                         //Get previous best result
@@ -52,11 +57,14 @@ public class CompareFileTask implements Runnable
                         directionLeft[ii][jj] = false;
 
                     }
+
                 }
             }
+            System.out.println("pass loop");
 
-            columnNumber = file1Contents.length();
-            rowNumber = file2Contents.length();
+
+            columnNumber = file1Contents.length() - 1;
+            rowNumber = file2Contents.length() - 1;
 
             while (columnNumber > 0 && rowNumber > 0)
             {
@@ -74,12 +82,17 @@ public class CompareFileTask implements Runnable
                 {
                     rowNumber -= 1;
                 }
+
+                System.out.println("iteration");
+
             }
+
 
             similarity = (matches * 2) / (file1Contents.length());
 
+
             //Construct new ComparisonResult object with file names and the calculated similarity and add to table
-            table.addCompared(new ComparisonResult(file1.toFile().getName(), file2.toFile().getName(), similarity));
+            table.queueResult(new ComparisonResult(file1.toFile().getName(), file2.toFile().getName(), similarity));
 
 
 

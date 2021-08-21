@@ -87,23 +87,40 @@ public class ComparerUI extends Application
         File directory = dc.showDialog(stage);
         
         System.out.println("Comparing files within " + directory + "...");
-        
+
+        //Create new thread and run in new thread if valid directory
+        if (directory != null)
+        {
+            new Thread(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    new ComparisonTable(ComparerUI.this, directory).start();
+                }
+            }).start();
+        }
+
+
         // Extremely fake way of demonstrating how to use the progress bar (noting that it can 
         // actually only be set to one value, from 0-1, at a time.)
+        /*
         progressBar.setProgress(0.25);
         progressBar.setProgress(0.5);
         progressBar.setProgress(0.6);
         progressBar.setProgress(0.85);
         progressBar.setProgress(1.0);
+        */
 
         // Extremely fake way of demonstrating how to update the table (noting that this shouldn't
         // just happen once at the end, but progressively as each result is obtained.)
+        /*
         newResults = new ArrayList<>();
         newResults.add(new ComparisonResult("Example File 1", "Example File 2", 0.75));
         newResults.add(new ComparisonResult("Example File 1", "Example File 3", 0.31));
         newResults.add(new ComparisonResult("Example File 2", "Example File 3", 0.45));
-        
-        resultTable.getItems().setAll(newResults);        
+        resultTable.getItems().setAll(newResults);
+        */
         
         // progressBar.setProgress(0.0); // Reset progress bar after successful comparison?
     }
@@ -121,6 +138,8 @@ public class ComparerUI extends Application
 
     public void setProgress(double progress)
     {
+        System.out.println("progress");
+
         progressBar.setProgress(progress);
     }
 }

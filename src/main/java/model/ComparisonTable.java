@@ -1,6 +1,8 @@
 package model;
 
 import java.io.*;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
@@ -14,6 +16,7 @@ import view.*;
 public class ComparisonTable 
 {
     private List<CompareFileTask> compareTasks;
+    private List<Path> fileList;
     private LinkedBlockingQueue<ComparisonResult> resultQueue;
     private List<ComparisonResult> finished;
     private List<ComparisonResult> highSimilarity;
@@ -33,23 +36,111 @@ public class ComparisonTable
         finished = new ArrayList<>();
         resultQueue = new LinkedBlockingQueue<>();
         fileHandler = new FileIO();
+        fileList = new ArrayList<>();
+        highSimilarity = new ArrayList<>();
         progress = 0.0;
     }
 
     public void start()
     {
+        Path[] fileArray;
+        ComparisonPair tempPair;
+        Iterator<CompareFileTask> iter;
+        ComparisonResult newResult;
+
         //Get paths to all files
+        try {
+            Files.walkFileTree(directory.toPath(), new SimpleFileVisitor<Path>()
+            {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+                {
+                    fileList.add(file);
+                    return FileVisitResult.CONTINUE;
+                }
+            });
 
-        //Loop over to get all combinations (tasks)
+            //Loop over list of files to get all combinations (tasks) there *should* be no duplicate tasks
+            fileArray = fileList.toArray(new Path[1]);
 
-        //Iterate over and submit all tasks to executor
+            for (int ii = 0; ii < fileArray.length - 1; ii++)
+            {
+                for (int jj = ii + 1; jj < fileArray.length; jj++)
+                {
+                    tempPair = new ComparisonPair(fileArray[ii], fileArray[jj]);
+                    compareTasks.add(new CompareFileTask(tempPair, this));
 
-        //Loop until all tasks are complete
+                }
+            }
+
+            iter = compareTasks.iterator();
+
+            //Submit every task to the executor service
+            while (iter.hasNext())
+            {
+                executor.submit(iter.next());
+            }
+
+
+            //Can shutdown executor so it doesn't accept any new tasks after finished those already
+            //submitted
+            executor.shutdown();
+
+            //Loop until all tasks are complete (interrupted exception thrown)
+            while (true)
+            {
+                System.out.println("enter loop");
+
+                //Take new result (Can throw interrupted exception)
+                newResult = resultQueue.take();
+
+                System.out.println("pass blocking");
+
+
+                System.out.println(newResult.getFile1() + "->" + newResult.getFile2());
+
+                
+                //Add to results.csv
+
+                //Add to finished
+                finished.add(newResult);
+
+                //Update progress
+                progress = finished.size() / compareTasks.size();
+
+                //Check for high similarity
+                if (newResult.getSimilarity() > 0.5)
+                {
+                    highSimilarity.add(newResult);
+                }
+
+                updateUI();
+
+                //If all tasks complete, interrupt thread
+                if (finished.size() == compareTasks.size())
+                {
+                    System.out.println("test");
+
+                    Thread.currentThread().interrupt();
+                }
+
+
+            }
+
+        } catch (IOException e) {
+            //TODO: handle exception
+        }
+        catch (InterruptedException interuptException)
+        {
+            //Exit loop. All files finished comparing
+        }
+
+        
     }
 
-    public void addCompared(ComparisonResult newResult)
+    public void queueResult(ComparisonResult newResult)
     {
-        finished.add(newResult);
+        resultQueue.add(newResult);
     }
 
     public void updateUI()

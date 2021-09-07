@@ -41,6 +41,7 @@ public class ComparisonTable
         fileList = new ArrayList<>();
         highSimilarity = new ArrayList<>();
         progress = 0.0;
+
         fileExtensions = new ArrayList<>();
         fileExtensions.add(".txt");
         fileExtensions.add(".md");
@@ -64,10 +65,21 @@ public class ComparisonTable
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
                 {
+                    //Check of file extension is valid
                     fileList.add(file);
                     return FileVisitResult.CONTINUE;
                 }
             });
+
+            //Interrupt thread if only 1 file (No comparisons possible)
+            if (fileList.size() <= 1)
+            {
+                comparisonTableThread.interrupt();
+                //Sleep to check if check if interrupted and throw exception to skip comparing
+                Thread.sleep(1);
+            }
+
+
 
             //Loop over list of files to get all combinations (tasks) there *should* be no duplicate tasks
             fileArray = fileList.toArray(new Path[1]);
@@ -90,10 +102,12 @@ public class ComparisonTable
                 executor.submit(iter.next());
             }
 
-
-            //Can shutdown executor so it doesn't accept any new tasks after finished those already
+            //Can shutdown executor here so it doesn't accept any new tasks after finished those already
             //submitted
             executor.shutdown();
+            System.out.println(executor.toString());
+
+
 
             //Start the file IO thread
             new Thread(new Runnable(){
@@ -111,7 +125,7 @@ public class ComparisonTable
                 newResult = resultQueue.take();
 
 
-                System.out.println(newResult.getFile1() + "->" + newResult.getFile2() + " similarity: " + newResult.getSimilarity());
+                //System.out.println(newResult.getFile1() + "->" + newResult.getFile2() + " similarity: " + newResult.getSimilarity());
 
                 
                 //Add to results.csv
@@ -122,7 +136,7 @@ public class ComparisonTable
                 finished.add(newResult);
 
                 //Update progress
-                progress = finished.size() / compareTasks.size();
+                progress = (double)finished.size() / (double)compareTasks.size();
 
                 //Check for high similarity
                 if (newResult.getSimilarity() > 0.5)
@@ -148,12 +162,14 @@ public class ComparisonTable
         {
             //Exit loop. All files finished comparing OR stop button clicked
 
-            //Also stop the File IO thread
+            //Also stop the File IO thread if started
             fileHandler.stop();
         }
 
         System.out.println("Compare Tasks: " + compareTasks.size());
         System.out.println("Finished: " + finished.size());
+
+
 
 
         

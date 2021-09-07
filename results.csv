@@ -1,4 +1,187 @@
-Concatfile.txt,test (copy).txt,0.6666666666666666
-Concatfile.txt,test (copy).txt,0.6666666666666666
+CompareFileTask.java,ComparisonPair.java,0.07457870204374328
+CompareFileTask.java,ComparisonResult.java,0.10212317950517635
+ComparisonPair.java,ComparisonResult.java,0.544611819235226
+CompareFileTask.java,ComparerUI.java,0.20663068619892058
+ComparisonPair.java,FileIO.java,0.21866666666666668
+ComparisonPair.java,ComparerUI.java,0.05595667870036101
+ComparisonResult.java,ComparisonTable.java,0.10417362270450752
+ComparisonResult.java,FileIO.java,0.19063686208350908
+CompareFileTask.java,FileIO.java,0.196725938470223
+ComparisonResult.java,ComparerUI.java,0.11093446387564035
+ComparisonPair.java,ComparisonTable.java,0.08451184188107003
+FileIO.java,ComparerUI.java,0.1515323496027242
+ComparisonTable.java,FileIO.java,0.2675884505896706
+ComparisonTable.java,ComparerUI.java,0.2263054279553764
+CompareFileTask.java,ComparisonTable.java,0.24231667445119104
+CompareFileTask.class,ComparisonPair.class,0.20920502092050208
+CompareFileTask.class,ComparisonResult.class,0.20535158680771623
+CompareFileTask.class,ComparisonTable$2.class,0.24768
+CompareFileTask.class,ComparisonTable$1.class,0.2860927152317881
+ComparisonPair.class,ComparisonResult.class,0.5054151624548736
+ComparisonPair.class,ComparisonTable$1.class,0.2692702980472765
+ComparisonPair.class,ComparisonTable$2.class,0.4058641975308642
+ComparisonPair.class,ComparisonTable.class,0.09655419956927494
+ComparisonPair.class,FileIO.class,0.17039759438690277
+CompareFileTask.class,FileIO.class,0.27664869348817916
+ComparisonResult.class,ComparisonTable$1.class,0.2610813443740867
+ComparisonPair.class,ComparerUI.class,0.09492822966507176
+ComparisonResult.class,ComparisonTable$2.class,0.38774055595153245
+ComparisonResult.class,FileIO.class,0.19612903225806452
+CompareFileTask.class,ComparisonTable.class,0.2007836778813674
+ComparisonResult.class,ComparisonTable.class,0.09896108469801021
+ComparisonTable$1.class,ComparisonTable$2.class,0.4124236252545825
+ComparisonResult.class,ComparerUI.class,0.1072768192048012
+CompareFileTask.class,ComparerUI.class,0.11823079104054438
+ComparisonTable$1.class,FileIO.class,0.2272603113903305
+ComparisonTable$1.class,ComparisonTable.class,0.17115384615384616
+ComparisonTable$2.class,FileIO.class,0.18199933576884755
+ComparisonTable$1.class,ComparerUI.class,0.1119972849143051
+ComparisonTable$2.class,ComparisonTable.class,0.09373881932021468
+ComparisonTable$2.class,ComparerUI.class,0.0789624260919321
+ComparisonTable.class,FileIO.class,0.3049265815836421
+FileIO.class,ComparerUI.class,0.13631123919308358
+ComparisonTable.class,ComparerUI.class,0.17333753545540498
+CompareFileTask.java,ComparisonPair.java,0.09924592556555582
+CompareFileTask.java,ComparisonResult.java,0.11956521739130435
+CompareFileTask.java,FileIO.java,0.20715429791777895
+ComparisonPair.java,ComparisonResult.java,0.544611819235226
+ComparisonPair.java,FileIO.java,0.21866666666666668
+CompareFileTask.java,ComparisonTable.java,0.21926634105788215
+ComparisonPair.java,ComparerUI.java,0.05595667870036101
+ComparisonPair.java,ComparisonTable.java,0.07930924208506555
+ComparisonResult.java,FileIO.java,0.19063686208350908
+ComparisonResult.java,ComparisonTable.java,0.09945098039215686
+ComparisonResult.java,ComparerUI.java,0.11093446387564035
+ComparisonTable.java,FileIO.java,0.25586189126513786
+FileIO.java,ComparerUI.java,0.1515323496027242
+CompareFileTask.java,ComparerUI.java,0.23324727803344933
+ComparisonTable.java,ComparerUI.java,0.2348896127397756
+Concatfile.txt,sfdsfsdfs,0.0
+Concatfile.txt,test (4th copy).txt,0.6666666666666666
 Concatfile.txt,test.txt,0.6666666666666666
-test (copy).txt,test.txt,1.0
+Concatfile.txt,test (3rd copy).txt,0.6666666666666666
+ComparerUI.java,sfdsfsdfs,0.0
+Concatfile.txt,main.zip,0.003499562554680665
+Concatfile.txt,ComparerUI.java,0.0057859209257473485
+ComparerUI.java,test (4th copy).txt,0.0023179447556499902
+ComparerUI.java,test.txt,0.0023179447556499902
+ComparerUI.java,test (3rd copy).txt,0.0023179447556499902
+main.zip,sfdsfsdfs,0.0
+main.zip,test.txt,0.0052677787532923615
+main.zip,test (3rd copy).txt,0.0052677787532923615
+sfdsfsdfs,test (3rd copy).txt,0.0
+sfdsfsdfs,test.txt,0.0
+main.zip,test (4th copy).txt,0.0052677787532923615
+test (3rd copy).txt,test (4th copy).txt,1.0
+test (3rd copy).txt,test.txt,1.0
+sfdsfsdfs,test (4th copy).txt,0.0
+test (4th copy).txt,test.txt,1.0
+ComparerUI.java,main.zip,0.025541067347761796
+Concatfile.txt,sfdsfsdfs,0.0
+Concatfile.txt,test (3rd copy).txt,0.6666666666666666
+Concatfile.txt,test (4th copy).txt,0.6666666666666666
+Concatfile.txt,test.txt,0.6666666666666666
+ComparerUI.java,sfdsfsdfs,0.0
+ComparerUI.java,test (3rd copy).txt,0.0023179447556499902
+Concatfile.txt,main.zip,0.003499562554680665
+ComparerUI.java,test (4th copy).txt,0.0023179447556499902
+Concatfile.txt,ComparerUI.java,0.0057859209257473485
+ComparerUI.java,test.txt,0.0023179447556499902
+main.zip,test (4th copy).txt,0.0052677787532923615
+main.zip,sfdsfsdfs,0.0
+sfdsfsdfs,test (3rd copy).txt,0.0
+sfdsfsdfs,test (4th copy).txt,0.0
+sfdsfsdfs,test.txt,0.0
+test (3rd copy).txt,test (4th copy).txt,1.0
+test (3rd copy).txt,test.txt,1.0
+test (4th copy).txt,test.txt,1.0
+main.zip,test.txt,0.0052677787532923615
+main.zip,test (3rd copy).txt,0.0052677787532923615
+ComparerUI.java,main.zip,0.025541067347761796
+Concatfile.txt,ComparerUI.java,0.0057859209257473485
+Concatfile.txt,main.zip,0.003499562554680665
+Concatfile.txt,test (4th copy).txt,0.6666666666666666
+Concatfile.txt,test.txt,0.6666666666666666
+Concatfile.txt,test (3rd copy).txt,0.6666666666666666
+ComparerUI.java,test (3rd copy).txt,0.0023179447556499902
+ComparerUI.java,sfdsfsdfs,0.0
+ComparerUI.java,test (4th copy).txt,0.0023179447556499902
+Concatfile.txt,sfdsfsdfs,0.0
+main.zip,test (3rd copy).txt,0.0052677787532923615
+main.zip,sfdsfsdfs,0.0
+main.zip,test (4th copy).txt,0.0052677787532923615
+sfdsfsdfs,test (3rd copy).txt,0.0
+sfdsfsdfs,test (4th copy).txt,0.0
+sfdsfsdfs,test.txt,0.0
+main.zip,test.txt,0.0052677787532923615
+test (3rd copy).txt,test (4th copy).txt,1.0
+test (3rd copy).txt,test.txt,1.0
+ComparerUI.java,test.txt,0.0023179447556499902
+test (4th copy).txt,test.txt,1.0
+ComparerUI.java,main.zip,0.025541067347761796
+CompareFileTask.class,ComparisonResult.class,0.1926971463639153
+CompareFileTask.class,ComparisonPair.class,0.19860406091370558
+CompareFileTask.class,ComparisonTable$2.class,0.21572327044025158
+CompareFileTask.class,ComparisonTable$1.class,0.27291666666666664
+CompareFileTask.class,ComparisonTable$3.class,0.23522388059701493
+CompareFileTask.class,ComparerUI$1.class,0.22584541062801933
+CompareFileTask.class,FileIO.class,0.26348258706467664
+CompareFileTask.class,source-classes-mapping.txt,0.13212163579168124
+ComparisonPair.class,ComparisonResult.class,0.4736462093862816
+ComparisonPair.class,ComparisonTable$1.class,0.2533062054933876
+ComparisonPair.class,ComparisonTable$2.class,0.3552833078101072
+CompareFileTask.class,ComparisonTable.class,0.22718570516911296
+ComparisonPair.class,ComparisonTable$3.class,0.32113821138211385
+CompareFileTask.class,ComparerUI.class,0.1591738812975905
+ComparisonPair.class,FileIO.class,0.15994922246905743
+ComparisonPair.class,ComparerUI$1.class,0.3435326842837274
+ComparisonPair.class,ComparisonTable.class,0.10635799362523067
+ComparisonPair.class,source-classes-mapping.txt,0.1702127659574468
+ComparisonPair.class,ComparerUI.class,0.07156748346946713
+ComparisonResult.class,ComparisonTable$1.class,0.2585624698504583
+ComparisonResult.class,ComparisonTable$3.class,0.3108022741629817
+ComparisonResult.class,ComparisonTable$2.class,0.35385704175513094
+ComparisonPair.class,previous-compilation-data.bin,0.019684187756867835
+ComparisonResult.class,ComparerUI$1.class,0.31844660194174756
+ComparisonResult.class,FileIO.class,0.19828115408225905
+ComparisonResult.class,ComparisonTable.class,0.10711931443638761
+ComparisonResult.class,source-classes-mapping.txt,0.16453382084095064
+ComparisonTable$1.class,ComparisonTable$2.class,0.43229689067201604
+ComparisonTable$1.class,ComparisonTable$3.class,0.4454713493530499
+ComparisonResult.class,ComparerUI.class,0.07979539641943734
+CompareFileTask.class,previous-compilation-data.bin,0.03289796720023569
+ComparisonTable$1.class,ComparerUI$1.class,0.3236124176857949
+ComparisonTable$1.class,FileIO.class,0.22922636103151864
+ComparisonTable$1.class,ComparisonTable.class,0.17085275981350578
+ComparisonTable$1.class,source-classes-mapping.txt,0.18985074626865672
+ComparisonTable$2.class,ComparisonTable$3.class,0.601063829787234
+ComparisonTable$1.class,ComparerUI.class,0.12950839185811214
+ComparisonTable$2.class,ComparisonTable.class,0.10519285356486893
+ComparisonTable$2.class,ComparerUI$1.class,0.504774897680764
+ComparisonTable$2.class,FileIO.class,0.18433469644542308
+ComparisonResult.class,previous-compilation-data.bin,0.017420291413516857
+ComparisonTable$2.class,source-classes-mapping.txt,0.24630541871921183
+ComparisonTable$1.class,previous-compilation-data.bin,0.021063607924921793
+ComparisonTable$2.class,ComparerUI.class,0.08448520862937604
+ComparisonTable$3.class,FileIO.class,0.19767094655120931
+ComparisonTable$3.class,ComparerUI$1.class,0.519559902200489
+ComparisonTable$3.class,ComparisonTable.class,0.13216431238837473
+ComparisonTable$3.class,source-classes-mapping.txt,0.2059071729957806
+ComparisonTable$3.class,ComparerUI.class,0.10264189103779547
+ComparisonTable$2.class,previous-compilation-data.bin,0.01717062634989201
+ComparisonTable.class,ComparerUI$1.class,0.13984643032184282
+ComparisonTable$3.class,previous-compilation-data.bin,0.02065275548421616
+ComparisonTable.class,source-classes-mapping.txt,0.07936507936507936
+FileIO.class,ComparerUI$1.class,0.20658411356085774
+ComparisonTable.class,FileIO.class,0.33265254020934387
+FileIO.class,ComparerUI.class,0.22845816816190279
+FileIO.class,source-classes-mapping.txt,0.0986013986013986
+ComparerUI$1.class,ComparerUI.class,0.08687920741775688
+ComparisonTable.class,ComparerUI.class,0.31364956437560504
+ComparerUI$1.class,source-classes-mapping.txt,0.2074978204010462
+ComparerUI$1.class,previous-compilation-data.bin,0.020480377439416685
+ComparerUI.class,source-classes-mapping.txt,0.05685798976017246
+FileIO.class,previous-compilation-data.bin,0.03142646697765775
+previous-compilation-data.bin,source-classes-mapping.txt,0.019009944508543486
+ComparisonTable.class,previous-compilation-data.bin,0.06748651564185545
+ComparerUI.class,previous-compilation-data.bin,0.07630280418822963

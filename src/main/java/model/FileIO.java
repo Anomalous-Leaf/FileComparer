@@ -42,7 +42,6 @@ public class FileIO
 
                     //Convert to byte array and write to output  stream
                     outputStream.write(appendText.getBytes());
-                    System.out.println("file write finish");
                 }
                 else
                 {

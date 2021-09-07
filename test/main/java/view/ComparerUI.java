@@ -130,12 +130,8 @@ public class ComparerUI extends Application
     
     private void stopComparison()
     {
-        if (comparer != null)
-        {
-            System.out.println("Stopping comparison...");
-            comparer.stop();
-        }
-
+        System.out.println("Stopping comparison...");
+        comparer.stop();
     }
 
     public void setResults(List<ComparisonResult> inNewResults)

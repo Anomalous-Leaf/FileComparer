@@ -121,6 +121,7 @@ public class CompareFileTask implements Runnable
         }
         catch (OutOfMemoryError memoryEx)
         {
+            //When file is greater than 2GB
             //Default to 0 matches, and 0 similarity
             table.queueResult(new ComparisonResult(file1.toFile().getName(), file2.toFile().getName(), 0.0));
         }

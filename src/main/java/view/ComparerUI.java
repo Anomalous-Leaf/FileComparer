@@ -80,6 +80,13 @@ public class ComparerUI extends Application
         stage.sizeToScene();
         stage.show();
     }
+
+    @Override
+    public void stop()
+    {
+        //Called here just in case user does not click the stop button in window before closing application
+        stopComparison();
+    }
     
     private void crossCompare(Stage stage)
     {
@@ -88,7 +95,14 @@ public class ComparerUI extends Application
         dc.setTitle("Choose directory");
         File directory = dc.showDialog(stage);
         
-        System.out.println("Comparing files within " + directory + "...");
+        if (directory != null)
+        {
+            System.out.println("Comparing files within " + directory + "...");
+        }
+        else
+        {
+            System.out.println("No directory found");
+        }
 
         //Create new thread and run in new thread if valid directory
         if (directory != null)
@@ -103,33 +117,11 @@ public class ComparerUI extends Application
                 }
             }).start();
         }
-
-
-        // Extremely fake way of demonstrating how to use the progress bar (noting that it can 
-        // actually only be set to one value, from 0-1, at a time.)
-        /*
-        progressBar.setProgress(0.25);
-        progressBar.setProgress(0.5);
-        progressBar.setProgress(0.6);
-        progressBar.setProgress(0.85);
-        progressBar.setProgress(1.0);
-        */
-
-        // Extremely fake way of demonstrating how to update the table (noting that this shouldn't
-        // just happen once at the end, but progressively as each result is obtained.)
-        /*
-        newResults = new ArrayList<>();
-        newResults.add(new ComparisonResult("Example File 1", "Example File 2", 0.75));
-        newResults.add(new ComparisonResult("Example File 1", "Example File 3", 0.31));
-        newResults.add(new ComparisonResult("Example File 2", "Example File 3", 0.45));
-        resultTable.getItems().setAll(newResults);
-        */
-        
-        // progressBar.setProgress(0.0); // Reset progress bar after successful comparison?
     }
     
     private void stopComparison()
     {
+        //If comparer is null, comparing process is not started. Only call stop() if started, else there is nothing to stop
         if (comparer != null)
         {
             System.out.println("Stopping comparison...");

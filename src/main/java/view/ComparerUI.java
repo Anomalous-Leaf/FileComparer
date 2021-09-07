@@ -29,7 +29,7 @@ public class ComparerUI extends Application
     @Override
     public void start(Stage stage)
     {
-        stage.setTitle("SillyWindowTitlePleaseChange");
+        stage.setTitle("File comparer");
         stage.setMinWidth(600);
 
         // Create toolbar

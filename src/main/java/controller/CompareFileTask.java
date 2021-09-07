@@ -114,6 +114,16 @@ public class CompareFileTask implements Runnable
             table.queueResult(new ComparisonResult(file1.toFile().getName(), file2.toFile().getName(), 0.0));
 
         }
+        catch (SecurityException securityEx)
+        {
+            //Default to 0 matches, and 0 similarity
+            table.queueResult(new ComparisonResult(file1.toFile().getName(), file2.toFile().getName(), 0.0));   
+        }
+        catch (OutOfMemoryError memoryEx)
+        {
+            //Default to 0 matches, and 0 similarity
+            table.queueResult(new ComparisonResult(file1.toFile().getName(), file2.toFile().getName(), 0.0));
+        }
     }
     
     

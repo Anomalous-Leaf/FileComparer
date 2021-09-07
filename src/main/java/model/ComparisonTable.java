@@ -43,10 +43,10 @@ public class ComparisonTable
         progress = 0.0;
 
         fileExtensions = new ArrayList<>();
-        fileExtensions.add(".txt");
-        fileExtensions.add(".md");
-        fileExtensions.add(".java");
-        fileExtensions.add(".cs");
+        fileExtensions.add("txt");
+        fileExtensions.add("md");
+        fileExtensions.add("java");
+        fileExtensions.add("cs");
     }
 
     public void start()
@@ -65,8 +65,17 @@ public class ComparisonTable
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
                 {
-                    //Check of file extension is valid
-                    fileList.add(file);
+                    String fileName;
+                    String[] splitName;
+
+                    fileName = file.getFileName().toString();
+                    splitName = fileName.split("\\.");
+
+                    //Check if file extension is in list of valid extensions. Add file if valid
+                    if (fileExtensions.contains(splitName[splitName.length -1]))
+                    {
+                        fileList.add(file);
+                    }
                     return FileVisitResult.CONTINUE;
                 }
             });
@@ -102,11 +111,6 @@ public class ComparisonTable
                 executor.submit(iter.next());
             }
 
-            //Can shutdown executor here so it doesn't accept any new tasks after finished those already
-            //submitted
-            executor.shutdown();
-            System.out.println(executor.toString());
-
 
 
             //Start the file IO thread
@@ -123,10 +127,6 @@ public class ComparisonTable
             {
                 //Take new result (Can throw interrupted exception)
                 newResult = resultQueue.take();
-
-
-                //System.out.println(newResult.getFile1() + "->" + newResult.getFile2() + " similarity: " + newResult.getSimilarity());
-
                 
                 //Add to results.csv
                 fileHandler.add(newResult);
@@ -161,6 +161,10 @@ public class ComparisonTable
         catch (InterruptedException interruptException)
         {
             //Exit loop. All files finished comparing OR stop button clicked
+
+            //Shutdown executor after currently executing tasks finish executing
+            executor.shutdownNow();
+            System.out.println(executor.toString());
 
             //Also stop the File IO thread if started
             fileHandler.stop();

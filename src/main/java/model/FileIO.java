@@ -59,6 +59,7 @@ public class FileIO
         {
             //Exit loop
         }
+        fileWritingThread = null;
     }
 
     public void stop()

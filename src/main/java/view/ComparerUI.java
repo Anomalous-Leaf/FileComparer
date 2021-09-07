@@ -21,7 +21,9 @@ public class ComparerUI extends Application
     
     private TableView<ComparisonResult> resultTable = new TableView<>();  
     private ProgressBar progressBar = new ProgressBar();
+    private ComparisonTable comparer;
     List<ComparisonResult> newResults;
+
 
     
     @Override
@@ -96,7 +98,8 @@ public class ComparerUI extends Application
                 @Override
                 public void run()
                 {
-                    new ComparisonTable(ComparerUI.this, directory).start();
+                    comparer = new ComparisonTable(ComparerUI.this, directory);
+                    comparer.start();
                 }
             }).start();
         }
@@ -128,6 +131,7 @@ public class ComparerUI extends Application
     private void stopComparison()
     {
         System.out.println("Stopping comparison...");
+        comparer.stop();
     }
 
     public void setResults(List<ComparisonResult> inNewResults)
@@ -138,8 +142,6 @@ public class ComparerUI extends Application
 
     public void setProgress(double progress)
     {
-        System.out.println("progress");
-
         progressBar.setProgress(progress);
     }
 }

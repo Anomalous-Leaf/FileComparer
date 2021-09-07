@@ -26,6 +26,8 @@ public class ComparisonTable
     private ComparerUI ui;
     private ExecutorService executor;
     private double progress;
+    private List<String> fileExtensions;
+    private Thread comparisonTableThread;
 
     public ComparisonTable(ComparerUI inUi, File inDirectory)
     {
@@ -35,10 +37,15 @@ public class ComparisonTable
         compareTasks = new ArrayList<>();
         finished = new ArrayList<>();
         resultQueue = new LinkedBlockingQueue<>();
-        fileHandler = new FileIO();
+        fileHandler = new FileIO("results.csv");
         fileList = new ArrayList<>();
         highSimilarity = new ArrayList<>();
         progress = 0.0;
+        fileExtensions = new ArrayList<>();
+        fileExtensions.add(".txt");
+        fileExtensions.add(".md");
+        fileExtensions.add(".java");
+        fileExtensions.add(".cs");
     }
 
     public void start()
@@ -47,6 +54,8 @@ public class ComparisonTable
         ComparisonPair tempPair;
         Iterator<CompareFileTask> iter;
         ComparisonResult newResult;
+
+        comparisonTableThread = Thread.currentThread();
 
         //Get paths to all files
         try {
@@ -86,6 +95,15 @@ public class ComparisonTable
             //submitted
             executor.shutdown();
 
+            //Start the file IO thread
+            new Thread(new Runnable(){
+                @Override
+                public void run()
+                {
+                    fileHandler.start();
+                }
+            }).start();
+
             //Loop until all tasks are complete (interrupted exception thrown)
             while (true)
             {
@@ -93,10 +111,12 @@ public class ComparisonTable
                 newResult = resultQueue.take();
 
 
-                System.out.println(newResult.getFile1() + "->" + newResult.getFile2() + "similarity: " + newResult.getSimilarity());
+                System.out.println(newResult.getFile1() + "->" + newResult.getFile2() + " similarity: " + newResult.getSimilarity());
 
                 
                 //Add to results.csv
+                fileHandler.add(newResult);
+
 
                 //Add to finished
                 finished.add(newResult);
@@ -115,8 +135,6 @@ public class ComparisonTable
                 //If all tasks complete, interrupt thread
                 if (finished.size() == compareTasks.size())
                 {
-                    System.out.println("test");
-
                     Thread.currentThread().interrupt();
                 }
 
@@ -126,12 +144,16 @@ public class ComparisonTable
         } catch (IOException e) {
             //TODO: handle exception
         }
-        catch (InterruptedException interuptException)
+        catch (InterruptedException interruptException)
         {
-            //Exit loop. All files finished comparing
+            //Exit loop. All files finished comparing OR stop button clicked
+
+            //Also stop the File IO thread
+            fileHandler.stop();
         }
 
-        System.out.println("Comparisons: " + compareTasks.size());
+        System.out.println("Compare Tasks: " + compareTasks.size());
+        System.out.println("Finished: " + finished.size());
 
 
         
@@ -152,6 +174,12 @@ public class ComparisonTable
                 ui.setProgress(progress);
             }
         });
+    }
+
+    public void stop()
+    {
+        //Stop comparisons
+        comparisonTableThread.interrupt();
     }
 
 }

@@ -36,6 +36,7 @@ public class CompareFileTask implements Runnable
 
                 
             Arrays.fill(subsolutions[0], 0);
+
             for (int ii = 0; ii < subsolutions.length; ii++)
             {
                 subsolutions[ii][0] = 0;
@@ -46,6 +47,7 @@ public class CompareFileTask implements Runnable
             {
                 for (int jj = 1; jj < file2Contents.length(); jj++)
                 {
+                    //System.out.println(pair.getFirstPath().getFileName() + " VS " + pair.getSecondPath().getFileName());
 
 
                     if (file1Contents.charAt(ii - 1) == file2Contents.charAt(jj - 1))
@@ -89,6 +91,7 @@ public class CompareFileTask implements Runnable
 
                 }
 
+
             }
 
             System.out.println("matches: " + matches);
@@ -103,6 +106,8 @@ public class CompareFileTask implements Runnable
 
         } catch (IOException e) {
             //TODO: handle exception
+            System.out.println("Error");
+
         }
 
 

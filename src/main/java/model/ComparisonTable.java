@@ -49,7 +49,7 @@ public class ComparisonTable
         fileExtensions.add("cs");
     }
 
-    public void run()
+    private void run()
     {
         Path[] fileArray;
         ComparisonPair tempPair;

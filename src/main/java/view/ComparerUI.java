@@ -107,15 +107,8 @@ public class ComparerUI extends Application
         //Create new thread and run in new thread if valid directory
         if (directory != null)
         {
-            new Thread(new Runnable()
-            {
-                @Override
-                public void run()
-                {
-                    comparer = new ComparisonTable(ComparerUI.this, directory);
-                    comparer.start();
-                }
-            }).start();
+            comparer = new ComparisonTable(ComparerUI.this, directory);
+            comparer.start();
         }
     }
     

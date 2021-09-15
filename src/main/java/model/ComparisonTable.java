@@ -49,14 +49,12 @@ public class ComparisonTable
         fileExtensions.add("cs");
     }
 
-    public void start()
+    public void run()
     {
         Path[] fileArray;
         ComparisonPair tempPair;
         Iterator<CompareFileTask> iter;
         ComparisonResult newResult;
-
-        comparisonTableThread = Thread.currentThread();
 
         //Get paths to all files
         try {
@@ -71,11 +69,20 @@ public class ComparisonTable
                     fileName = file.getFileName().toString();
                     splitName = fileName.split("\\.");
 
-                    //Check if file extension is in list of valid extensions. Add file if valid
-                    if (fileExtensions.contains(splitName[splitName.length -1]))
+
+                    try 
                     {
-                        fileList.add(file);
+                        //Check if file extension is in list of valid extensions and if size is not zero. Add file if valid
+                        if (fileExtensions.contains(splitName[splitName.length -1]) && Files.size(file) > 0)
+                        {
+                            System.out.println("Testing");
+                            fileList.add(file);
+                        }
+                        
+                    } catch (IOException e) {
+                        //Just skip file if an exception is thrown
                     }
+
                     return FileVisitResult.CONTINUE;
                 }
             });
@@ -113,14 +120,9 @@ public class ComparisonTable
 
 
 
-            //Start the file IO thread
-            new Thread(new Runnable(){
-                @Override
-                public void run()
-                {
-                    fileHandler.start();
-                }
-            }).start();
+            //Start the fileIO thread
+            fileHandler.start();
+
 
             //Loop until all tasks are complete (interrupted exception thrown)
             while (true)
@@ -194,6 +196,21 @@ public class ComparisonTable
                 ui.setProgress(progress);
             }
         });
+    }
+
+    public void start()
+    {
+        //Start the run() method in a new thread
+        comparisonTableThread = new Thread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                ComparisonTable.this.run();
+            }
+        });
+
+        comparisonTableThread.start();
     }
 
     public void stop()

@@ -22,7 +22,7 @@ public class FileIO
         appendList.add(newResult);
     }
 
-    public void start()
+    private void run()
     {
         String appendText;
         ComparisonResult result;
@@ -60,6 +60,21 @@ public class FileIO
             //Exit loop
         }
         fileWritingThread = null;
+    }
+
+    public void start()
+    {
+        //Start the file IO thread
+        fileWritingThread = new Thread(new Runnable(){
+            @Override
+            public void run()
+            {
+                FileIO.this.run();
+            }
+        });
+
+        fileWritingThread.start();
+
     }
 
     public void stop()

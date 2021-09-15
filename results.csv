@@ -2327,3 +2327,28 @@ CUR_ENGY.GW_startup-config.txt,GenerateRandomTree.java,0.0754012691302725
 CUR_ENGY.GW_startup-config.txt,InputOption.java,0.06599450045829514
 CUR_ENGY.GW_startup-config.txt,InvalidArgumentsException.java,0.0532843362425356
 CUR_ENGY.GW_startup-config.txt,Option.java,0.04482594182164998
+CompareFileTask.java,ComparisonPair.java,0.08935155063977446
+CompareFileTask.java,ComparisonResult.java,0.11496196111580727
+ComparisonPair.java,ComparisonResult.java,0.544611819235226
+CompareFileTask.java,FileIO.java,0.19897563246934657
+ComparisonPair.java,FileIO.java,0.21056721056721056
+ComparisonPair.java,ComparisonTable.java,0.08207217694994179
+ComparisonPair.java,ComparerUI.java,0.06456988127473443
+ComparisonResult.java,FileIO.java,0.20482374768089054
+ComparisonResult.java,ComparisonTable.java,0.08808808808808809
+ComparisonResult.java,ComparerUI.java,0.12474603819585535
+CompareFileTask.java,ComparisonTable.java,0.21841541755888652
+FileIO.java,ComparerUI.java,0.2161917684305744
+ComparisonTable.java,ComparerUI.java,0.2259628579269966
+ComparisonTable.java,FileIO.java,0.24540441176470587
+CompareFileTask.java,ComparerUI.java,0.22283737024221453
+Concatfile.txt,ComparerUI.java,0.0057859209257473485
+ComparerUI.java,test (3rd copy).txt,0.0023179447556499902
+Concatfile.txt,test (3rd copy).txt,0.6666666666666666
+Concatfile.txt,test (4th copy).txt,0.6666666666666666
+test (3rd copy).txt,test (4th copy).txt,1.0
+ComparerUI.java,test.txt,0.0023179447556499902
+test (4th copy).txt,test.txt,1.0
+Concatfile.txt,test.txt,0.6666666666666666
+test (3rd copy).txt,test.txt,1.0
+ComparerUI.java,test (4th copy).txt,0.0023179447556499902
